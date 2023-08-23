@@ -1,0 +1,62 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/couplediary.css' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연인 다이어리</title>
+</head>
+<body>
+    <!-- nav바 -->
+    <nav class="navbar">
+        <div class="navbar__logo">
+            <a href="#"><img src="{% static 'image/logo_white.png' %}" width="145px"height="62px"></a>
+        </div>
+        <ul class="navbar__menu">
+            <li class="writing"><a href="{% url 'main:writing' %}">일기쓰기</a></li>
+            <li class="analysis"><a href="#">감정분석</a></li>
+            <li class="login"><a href="#">로그인/회원가입</a></li>
+        </ul>
+    </nav>
+    
+    <div class="root">
+        <a href="../mainpage/main.html"><img class="back" src="{% static 'image/backward.png' %}" width="18px" height="32px"></a>
+        <div class="diary">
+            <div class="diary_top">
+                <div class="date">6월 14일</div>
+                <div class="emotions">
+                    <img src="{% static 'image/flutter.png' %}" width="65px"height="62px">
+                    <img src="{% static 'image/flutter.png' %}" width="65px"height="62px">
+                </div>
+                <a href="{% url 'main:my_diary' %}"><button class="diary_button">내 일기로 돌아가기</button></a>
+            </div>
+            <div class="diary_center">
+                <div class="diary_title">
+                    {% if diary %}
+                    {{ diary.title }}
+                    {% else %}
+                    제목 없음
+                    {% endif %}
+                </div>
+                <div class="diary_content">
+                    {% if diary %}
+                    {{ diary.content }}
+                    {% else %}
+                    일기 내용이 없습니다.
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="wrapper"></div>
+    <footer>
+        ⓒ 마음이음. 2023 All rights reserved.
+    </footer>
+</body>
+</html>
